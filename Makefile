@@ -1,19 +1,19 @@
 
 # Global Variables
-DOCKER_USERNAME ?= pabel1
-PROJECT_VERSION ?= latest
+DOCKER_USERNAME ?=pabel1
+PROJECT_VERSION ?=latest
 
 BACKEND_DIR ?= .
 
 # Backend Configuration
-BACKEND_IMAGE_NAME ?= todo-backend
-BACKEND_CONTAINER_NAME ?= todo-back
-BACKEND_PORT ?= 4000
+BACKEND_IMAGE_NAME ?=todo-backend
+BACKEND_CONTAINER_NAME ?=todo-back
+BACKEND_PORT ?=4007
 
 # Colored output
-GREEN := \033[0;32m
-YELLOW := \033[0;33m
-NC := \033[0m
+GREEN := \033[0;32m]
+YELLOW := \033[0;33m]
+NC := \033[0m]
 
 # Backend Targets
 .PHONY: build-backend
@@ -40,10 +40,9 @@ push-backend: tag-backend
 .PHONY: run-backend
 run-backend: tag-backend
 	@echo "$(GREEN)Running Backend Docker Container...$(NC)"
-	@docker rm -f $(BACKEND_CONTAINER_NAME) 2>/dev/null || true
 	docker run -d \
 		--name $(BACKEND_CONTAINER_NAME) \
-		-p $(BACKEND_PORT):3000 \
+		-p $(BACKEND_PORT):4007 \
 		$(DOCKER_USERNAME)/$(BACKEND_IMAGE_NAME):$(PROJECT_VERSION)
 
 # Composite Targets
